@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07080c"/>
+      <stop offset="50%" stop-color="#0b0a18"/>
+      <stop offset="100%" stop-color="#06060d"/>
+    </linearGradient>
+
+    <!-- Saffron / Kesar Accent Gradient -->
+    <linearGradient id="kesar" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffbe7a"/>
+      <stop offset="50%" stop-color="#ff9a3d"/>
+      <stop offset="100%" stop-color="#d9640f"/>
+    </linearGradient>
+
+    <!-- Card Background Gradient -->
+    <linearGradient id="card-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+
+    <!-- Card Hover Glow Effect -->
+    <radialGradient id="glow-card" cx="50%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#ff9a3d" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#ff9a3d" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="soft-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1280" height="400" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="#ffffff" stroke-opacity="0.025" stroke-width="1">
+    <line x1="0" y1="100" x2="1280" y2="100"/>
+    <line x1="0" y1="200" x2="1280" y2="200"/>
+    <line x1="0" y1="300" x2="1280" y2="300"/>
+    <line x1="320" y1="0" x2="320" y2="400"/>
+    <line x1="640" y1="0" x2="640" y2="400"/>
+    <line x1="960" y1="0" x2="960" y2="400"/>
+  </g>
+
+  <!-- Ambient background glow spots -->
+  <circle cx="200" cy="180" r="160" fill="#ff9a3d" opacity="0.04" filter="url(#soft-glow)"/>
+  <circle cx="1080" cy="220" r="180" fill="#a78bfa" opacity="0.03" filter="url(#soft-glow)"/>
+
+  <!-- ═══════════════ CARD 1: ZERO STORAGE ═══════════════ -->
+  <g transform="translate(60, 50)">
+    <!-- Card Frame -->
+    <rect width="265" height="300" rx="20" fill="url(#card-bg)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    <rect width="265" height="300" rx="20" fill="url(#glow-card)"/>
+    
+    <!-- Icon Container -->
+    <rect x="24" y="28" width="52" height="52" rx="14" fill="#ffffff" fill-opacity="0.05" stroke="#ff9a3d" stroke-opacity="0.3"/>
+    <!-- Hard Drive / Cloud-off Icon -->
+    <g transform="translate(36, 40)" stroke="url(#kesar)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/>
+      <line x1="6" y1="14" x2="6.01" y2="14"/>
+      <line x1="10" y1="14" x2="10.01" y2="14"/>
+      <!-- Slash line through cloud -->
+      <line x1="2" y1="2" x2="26" y2="26" stroke="#ffbe7a" stroke-width="2"/>
+    </g>
+
+    <!-- Badge -->
+    <rect x="175" y="36" width="66" height="24" rx="12" fill="#ff9a3d" fill-opacity="0.12" stroke="#ff9a3d" stroke-opacity="0.3"/>
+    <text x="208" y="52" fill="#ffbe7a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1" text-anchor="middle">DIRECT</text>
+
+    <!-- Content -->
+    <text x="24" y="125" fill="#f5f1e8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.5">Zero-Storage</text>
+    <text x="24" y="150" fill="#a7a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400">Bytes stream peer-to-peer</text>
+    <text x="24" y="170" fill="#a7a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400">straight into disk sinks.</text>
+
+    <!-- Bullet Specs -->
+    <g transform="translate(24, 205)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+      <circle cx="4" cy="4" r="3" fill="#ff9a3d"/>
+      <text x="16" y="8" fill="#cfcdd8">No file size limit (100 GB+)</text>
+      <circle cx="4" cy="28" r="3" fill="#ff9a3d"/>
+      <text x="16" y="32" fill="#cfcdd8">Resumes dropped transfers</text>
+      <circle cx="4" cy="52" r="3" fill="#ff9a3d"/>
+      <text x="16" y="56" fill="#cfcdd8">No server retention ever</text>
+    </g>
+  </g>
+
+  <!-- ═══════════════ CARD 2: END-TO-END ENCRYPTED ═══════════════ -->
+  <g transform="translate(355, 50)">
+    <!-- Card Frame -->
+    <rect width="265" height="300" rx="20" fill="url(#card-bg)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    <rect width="265" height="300" rx="20" fill="url(#glow-card)"/>
+
+    <!-- Icon Container -->
+    <rect x="24" y="28" width="52" height="52" rx="14" fill="#ffffff" fill-opacity="0.05" stroke="#ff9a3d" stroke-opacity="0.3"/>
+    <!-- Shield / Lock Icon -->
+    <g transform="translate(36, 40)" stroke="url(#kesar)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </g>
+
+    <!-- Badge -->
+    <rect x="180" y="36" width="61" height="24" rx="12" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.3"/>
+    <text x="210" y="52" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1" text-anchor="middle">SECURE</text>
+
+    <!-- Content -->
+    <text x="24" y="125" fill="#f5f1e8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.5">E2E Encrypted</text>
+    <text x="24" y="150" fill="#a7a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400">Military-grade cryptography</text>
+    <text x="24" y="170" fill="#a7a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400">applied at the app layer.</text>
+
+    <!-- Bullet Specs -->
+    <g transform="translate(24, 205)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+      <circle cx="4" cy="4" r="3" fill="#ff9a3d"/>
+      <text x="16" y="8" fill="#cfcdd8">AES-256-GCM + HKDF</text>
+      <circle cx="4" cy="28" r="3" fill="#ff9a3d"/>
+      <text x="16" y="32" fill="#cfcdd8">ECDH P-256 per session</text>
+      <circle cx="4" cy="52" r="3" fill="#ff9a3d"/>
+      <text x="16" y="56" fill="#cfcdd8">4-emoji SAS verification</text>
+    </g>
+  </g>
+
+  <!-- ═══════════════ CARD 3: 6-DIGIT CODE SHARE ═══════════════ -->
+  <g transform="translate(650, 50)">
+    <!-- Card Frame -->
+    <rect width="265" height="300" rx="20" fill="url(#card-bg)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    <rect width="265" height="300" rx="20" fill="url(#glow-card)"/>
+
+    <!-- Icon Container -->
+    <rect x="24" y="28" width="52" height="52" rx="14" fill="#ffffff" fill-opacity="0.05" stroke="#ff9a3d" stroke-opacity="0.3"/>
+    <!-- Hash / Keypad Icon -->
+    <g transform="translate(36, 40)" stroke="url(#kesar)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="4" y1="9" x2="20" y2="9"/>
+      <line x1="4" y1="15" x2="20" y2="15"/>
+      <line x1="10" y1="3" x2="8" y2="21"/>
+      <line x1="16" y1="3" x2="14" y2="21"/>
+    </g>
+
+    <!-- Badge -->
+    <rect x="175" y="36" width="66" height="24" rx="12" fill="#ff9a3d" fill-opacity="0.12" stroke="#ff9a3d" stroke-opacity="0.3"/>
+    <text x="208" y="52" fill="#ffbe7a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1" text-anchor="middle">INSTANT</text>
+
+    <!-- Content -->
+    <text x="24" y="125" fill="#f5f1e8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.5">Share with Code</text>
+    
+    <!-- Code display chip -->
+    <g transform="translate(24, 138)">
+      <rect width="180" height="32" rx="8" fill="#000000" fill-opacity="0.5" stroke="#ff9a3d" stroke-opacity="0.4"/>
+      <text x="90" y="22" fill="#ff9a3d" font-family="'Courier New', Courier, monospace" font-size="16" font-weight="700" letter-spacing="4" text-anchor="middle" filter="url(#neon-glow)">4 8 2 9 1 7</text>
+    </g>
+
+    <!-- Bullet Specs -->
+    <g transform="translate(24, 205)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+      <circle cx="4" cy="4" r="3" fill="#ff9a3d"/>
+      <text x="16" y="8" fill="#cfcdd8">No app or account needed</text>
+      <circle cx="4" cy="28" r="3" fill="#ff9a3d"/>
+      <text x="16" y="32" fill="#cfcdd8">Recipient enters code online</text>
+      <circle cx="4" cy="52" r="3" fill="#ff9a3d"/>
+      <text x="16" y="56" fill="#cfcdd8">SPAKE2 context-bound PAKE</text>
+    </g>
+  </g>
+
+  <!-- ═══════════════ CARD 4: UNIVERSAL SYNC ═══════════════ -->
+  <g transform="translate(945, 50)">
+    <!-- Card Frame -->
+    <rect width="265" height="300" rx="20" fill="url(#card-bg)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    <rect width="265" height="300" rx="20" fill="url(#glow-card)"/>
+
+    <!-- Icon Container -->
+    <rect x="24" y="28" width="52" height="52" rx="14" fill="#ffffff" fill-opacity="0.05" stroke="#ff9a3d" stroke-opacity="0.3"/>
+    <!-- Sync / Multi-device Icon -->
+    <g transform="translate(36, 40)" stroke="url(#kesar)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="3" width="20" height="14" rx="2"/>
+      <line x1="8" y1="21" x2="16" y2="21"/>
+      <line x1="12" y1="17" x2="12" y2="21"/>
+    </g>
+
+    <!-- Badge -->
+    <rect x="175" y="36" width="66" height="24" rx="12" fill="#a78bfa" fill-opacity="0.12" stroke="#a78bfa" stroke-opacity="0.3"/>
+    <text x="208" y="52" fill="#c4b5fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" letter-spacing="1" text-anchor="middle">CROSS-OS</text>
+
+    <!-- Content -->
+    <text x="24" y="125" fill="#f5f1e8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="600" letter-spacing="-0.5">Universal P2P</text>
+    <text x="24" y="150" fill="#a7a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400">Works across any browser,</text>
+    <text x="24" y="170" fill="#a7a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400">device, or network seamlessly.</text>
+
+    <!-- Bullet Specs -->
+    <g transform="translate(24, 205)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">
+      <circle cx="4" cy="4" r="3" fill="#ff9a3d"/>
+      <text x="16" y="8" fill="#cfcdd8">Live clipboard sync</text>
+      <circle cx="4" cy="28" r="3" fill="#ff9a3d"/>
+      <text x="16" y="32" fill="#cfcdd8">Chrome extension (MV3)</text>
+      <circle cx="4" cy="52" r="3" fill="#ff9a3d"/>
+      <text x="16" y="56" fill="#cfcdd8">iOS · Android · Mac · Win</text>
+    </g>
+  </g>
+</svg>

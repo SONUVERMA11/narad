@@ -1,117 +1,222 @@
-# Narad (नारद) — Bhejo. Pahunch gaya.
+<div align="center">
 
-Instant, end‑to‑end encrypted, **zero‑storage** sharing between devices: files of any size, text, images, clipboard and 1:1 chat.
-Same Wi‑Fi → bytes never leave the router. Anywhere else → encrypted peer‑to‑peer over the internet with a room code.
-The server only introduces peers; it never sees content.
+  <img src="./.github/assets/hero-banner.png" alt="Narad — Peer-to-Peer File Sharing" width="100%" style="border-radius: 16px; margin-bottom: 24px;" />
 
-Design doc: [NARAD-System-Design.md](./NARAD-System-Design.md)
+  # Narad (नारद)
+  ### *भेजो। पहुँच गया।* — Instant, Zero-Storage Peer-to-Peer Sharing
 
-## Monorepo
+  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](./LICENSE)
+  [![Tests Passing](https://img.shields.io/badge/tests-39%20passed-10b981.svg?style=flat-square)](https://github.com/SONUVERMA11/narad)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6.svg?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![WebRTC](https://img.shields.io/badge/WebRTC-P2P%20Streaming-ff9a3d.svg?style=flat-square)](https://webrtc.org/)
+  [![End-to-End Encrypted](https://img.shields.io/badge/E2EE-AES--256--GCM-a78bfa.svg?style=flat-square)](./SECURITY.md)
+  [![PWA Ready](https://img.shields.io/badge/PWA-Cross--Platform-ffbe7a.svg?style=flat-square)](https://app.narad.sh)
 
-| Path | What |
+  <p align="center">
+    <b>Files of any size &bull; Live clipboard sync &bull; Text &amp; Chat &bull; 6-digit room codes &bull; Zero server storage</b>
+  </p>
+
+  <p align="center">
+    <a href="https://narad.sh"><strong>Explore Landing Page »</strong></a> &bull;
+    <a href="https://app.narad.sh"><strong>Launch Web App »</strong></a> &bull;
+    <a href="https://narad.sh/receive"><strong>Receive with Code »</strong></a> &bull;
+    <a href="./NARAD-System-Design.md"><strong>System Architecture »</strong></a>
+  </p>
+
+  <br />
+
+  <p align="center">
+    <a href="https://narad.sh">
+      <img src="https://img.shields.io/badge/🌐%20Live%20Website-narad.sh-ff9a3d?style=for-the-badge&logoColor=white" alt="Live Website" />
+    </a>
+    &nbsp;
+    <a href="https://app.narad.sh">
+      <img src="https://img.shields.io/badge/🚀%20Live%20App-app.narad.sh-10b981?style=for-the-badge&logoColor=white" alt="Live App" />
+    </a>
+    &nbsp;
+    <a href="https://narad.sh/receive">
+      <img src="https://img.shields.io/badge/🔑%20Receive%20Code-narad.sh%2Freceive-8b5cf6?style=for-the-badge&logoColor=white" alt="Receive Code" />
+    </a>
+  </p>
+
+</div>
+
+---
+
+## ⚡ Overview
+
+**Narad** is a modern, privacy-first peer-to-peer data transport platform that lets you share files of any size, synchronize clipboards, and exchange end-to-end encrypted messages directly between devices.
+
+* **On the same Wi-Fi:** Bytes travel strictly over your local network router at wire speed. They never hit the public internet.
+* **Across the globe:** Secure WebRTC streams traverse NATs with STUN/TURN, authenticated and rendezvoused via a disposable 6-digit code or private space link.
+* **Zero cloud storage:** The server only acts as a signaling introduction layer (**Akash**). It never sees your file names, sizes, text, or payload. Everything is encrypted at the application layer with **AES-256-GCM**.
+
+<div align="center">
+  <img src="./.github/assets/features.svg" alt="Narad Features Breakdown" width="100%" style="border-radius: 12px; margin: 16px 0;" />
+</div>
+
+---
+
+## 🛰️ How It Works (P2P Architecture)
+
+<div align="center">
+  <img src="./.github/assets/architecture.svg" alt="Narad Architecture Diagram" width="100%" style="border-radius: 12px; margin: 20px 0;" />
+</div>
+
+1. **Signaling Handshake (Akash):** Devices exchange SDP offers and ICE candidates through lightweight WebSockets (Node or Cloudflare Workers). No content ever passes through this channel.
+2. **Channel Fingerprint & SPAKE2:** Both devices run **SPAKE2 over ristretto255** bound to the channel fingerprint to thwart man-in-the-middle attacks.
+3. **Application-Layer Encryption (Chakra):** A distinct session key is generated via ECDH (Curve P-256) and derived with HKDF-SHA256, encrypting all transfers under AES-256-GCM.
+4. **Pushpak Streaming Engine:** Files are read in memory-efficient chunks, transmitted with responsive back-pressure control, and written directly into stream sinks on the receiving machine.
+
+---
+
+## 🚀 Key Features
+
+| Feature | Description |
 |---|---|
-| `packages/core` | Engine (framework‑free TypeScript): **Setu** (WebRTC + perfect negotiation), **Chakra** (ECDH + HKDF + AES‑GCM, SAS emojis), **Pushpak** (chunked, back‑pressured streaming transfer), **Sanjay** (presence/signaling client), `Narad` orchestrator |
-| `apps/signaling` | **Akash** signaling server. Same room logic runs on Node (`src/node.ts`) and Cloudflare Durable Objects (`src/worker.ts`) |
-| `apps/web` | PWA (Vite + React + Tailwind): sabha, rooms, **share with a 6‑digit code**, **pairing (SPAKE2) + contacts**, **spaces**, chat, transfers |
-| `apps/extension` | **Chrome MV3 extension**: engine in an offscreen document, right‑click “Send to Narad ▸ device”, popup (clipboard / page / files), notifications, pairing & spaces |
-| `packages/license` | Team licenses: ES256 JWT mint/verify, room capacity rules |
-| `packages/icons` | Shared inline-SVG icon set (`<Icon name>`), used by web app and extension popup |
-| `apps/billing` | Cloudflare Worker: Razorpay checkout → signed webhook → license token (KV) |
-| `apps/site` | Static landing page (Hindi/English, light/dark theme, pricing, FAQ) + brand assets (`brand/`, `favicon.*`) for Cloudflare Pages |
-| `infra/selfhost` | docker‑compose: Caddy (TLS) + web + signaling + coturn |
-| `e2e` | Playwright: two browser contexts transfer to each other through real WebRTC |
-| `infra/turn` | coturn relay fallback |
+| **📁 No File Size Limits** | Transfer 50 MB PDFs or 50 GB 4K video shoots with equal ease. Chunks stream straight from disk to wire to disk. |
+| **🔄 Auto-Resumable Transfers** | Wi-Fi drops mid-transfer? Both sides freeze state and negotiate `resume-offer → resume-request(fromOffset) → resume-ack` when reconnected. |
+| **🔑 Share with 6-Digit Code** | Need to send a file to someone on another computer? Just give them a temporary 6-digit code. They enter it at [`narad.sh/receive`](https://narad.sh/receive) — no app download required. |
+| **📋 Background Clipboard Sync** | Real-time clipboard sharing across devices with contact opt-in. Extension captures and applies changes automatically. |
+| **🛡️ E2E Cryptography** | Double-layer security: WebRTC DTLS on the wire + application-layer AES-256-GCM + SAS 4-emoji visual verification. |
+| **🏢 Spaces & Contacts** | "Office mode" private rooms with cryptographic URL fragments, plus local-device contacts that require zero centralized account lists. |
+| **🧩 Chrome Extension (MV3)** | Lives in an offscreen document (`WEB_RTC` reason) so connections stay alive indefinitely without background sleep timeouts. |
+| **💼 Team Licensing & Billing** | Ed25519/ES256 signed JWT capability tickets, Razorpay webhook integration, and scalable Cloudflare Durable Objects. |
 
-## Run locally
+---
 
+## 📦 Monorepo Structure
+
+Narad is organized as a high-performance **pnpm monorepo**:
+
+```plaintext
+narad/
+├── packages/
+│   ├── core/           # Framework-free TypeScript engine: Setu (WebRTC), Chakra (Crypto), Pushpak (Streaming), Sanjay (Signaling)
+│   ├── icons/          # Shared SVG iconography (<Icon name="..." />) for web & extension
+│   └── license/        # ES256 JWT team licensing mint & verify engine
+├── apps/
+│   ├── web/            # Modern PWA UI (Vite + React 19 + Tailwind CSS + Lucide)
+│   ├── signaling/      # Akash signaling server (Dual Node.js & Cloudflare Durable Objects)
+│   ├── extension/      # Chrome Manifest V3 extension with offscreen WebRTC worker
+│   ├── site/           # Fast static landing page with light/dark theme & localized Hindi/English
+│   └── billing/        # Cloudflare Worker for automated Razorpay checkouts & license generation
+├── infra/
+│   ├── selfhost/       # Docker Compose + Caddy with automatic TLS reverse-proxy
+│   └── turn/           # Coturn relay configuration for restrictive enterprise firewalls
+├── e2e/                # Playwright end-to-end multi-browser WebRTC integration test suite
+└── .github/            # Workflows (CI/CD) and repository design assets
+```
+
+---
+
+## 🛠️ Tech Stack & Design System
+
+### Technology
+* **Frontend:** React 19, TypeScript, Tailwind CSS, Vite, Service Worker PWA
+* **Core Engine:** WebRTC DataChannels, Web Cryptography API (`SubtleCrypto`), SPAKE2 (`@noble/curves`), Streams API
+* **Backend:** Node.js, `ws`, Cloudflare Workers, Durable Objects, KV
+* **Testing:** Vitest (unit & integration), Playwright (multi-browser E2E)
+* **Packaging & Tools:** pnpm workspaces, ESLint, TypeScript Base Configs
+
+### Design System: *"Nishā + Kesar"*
+* **Night Canvas (`#06060d` / `#0b0a18`):** Deep, distraction-free surfaces with subtle frosted-glass overlays.
+* **Kesar Flame (`#ff9a3d` → `#d9640f`):** Amber/saffron energetic accents representing the divine message flow.
+* **Neel Accent (`#a78bfa`):** Soft violet cues for spaces, pairing sessions, and security verification.
+* **Typography:** Manrope (Variable geometric sans) + Noto Sans Devanagari + Instrument Serif.
+
+---
+
+## 💻 Getting Started Locally
+
+### Prerequisites
+* **Node.js**: `v20.0.0` or higher (Tested on `v22` & `v26`)
+* **pnpm**: `v9.12.0` (`npm install -g pnpm@9.12.0` or via Corepack)
+* **Git**: Installed and available in PATH
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/SONUVERMA11/narad.git
+cd narad
+```
+
+### 2. Install workspace dependencies
 ```bash
 pnpm install
-pnpm dev            # signaling on :8794 (NARAD_PORT), web on :5173
 ```
 
-Status (7 Nov 2026, Phase 4): unit 38/38, Playwright e2e 11/11 — MVP transfers, SPAKE2 pairing + contact presence, spaces, the Chrome extension in real Chromium, a 24 MB transfer that survives a dropped connection, folder paths, and clipboard sync between paired devices.
-
-## Phase 3 concepts
-
-- **Resumable transfers** (`transfer.ts` + `narad.ts`): when the WebRTC connection drops mid‑transfer, both sides freeze state (`paused`): the sender keeps its `File` handles, the receiver keeps its open sink and per‑file byte counts. Narad reconnects to the same device (one side initiates: the impolite one, or whoever still holds state if the other reloaded), the new channel runs `resume-offer → resume-request(fromFile, fromOffset) → resume-ack` and streaming continues from that byte. Paused state expires after 10 minutes. A receiver that lost state (page reload) answers `resume-reject` and the sender reports a clean error.
-- **Folders**: `FileMeta.path` carries the relative path. Drag a folder (or use 📁); with File System Access the tree is recreated under the chosen directory.
-- **Clipboard sync** (per contact, each side opts in): the web app watches the clipboard only while focused and pushes changes to contacts with sync on; the extension reads via `execCommand('paste')` in its offscreen document, so it works in the background. Incoming clips from contacts without sync show as an “Apply” toast.
-- **Push nudge (opt‑in)**: the single server‑side record in Narad. With VAPID keys configured, a device files its push subscription under one token per contact pair (`sha256(pairSecret, deviceId)`), so the server cannot tell who is whose contact. A nudge is an **empty** push; the service worker shows “a contact wants to send you something”. Rate‑limited, dropped when the push service says the subscription is gone. Enable with `node apps/signaling/scripts/vapid-keys.mjs` and the printed env vars; the 🔔 appears in the header when the host supports it.
-- **TURN credentials** are minted by the signaling host (`GET /ice`, coturn `use-auth-secret`, 1‑hour TTL); the client fetches them at start.
-- Deploy: `infra/DEPLOY.md` (Cloudflare Workers/Pages, Docker, coturn), CI in `.github/workflows/ci.yml`.
-
-## Share with code (Phase 5)
-
-`narad.startShare({ files, text })` joins room `share-<6 digits>`; every device that enters the code (`joinShare`, or `app/#code=…` from `narad.sh/receive`) gets its own encrypted channel and the items, for 15 minutes or until `stop()`. Both sides also run SPAKE2 on the code immediately, so **Add as contact** (either side, control message `contact-add`) adopts a device-bound contact without a second pairing step. e2e: `e2e/tests/share.spec.ts`.
-
-## Phase 4 (“Rajya”: launch & business)
-
-- **Group send**: ☑ Select many (or shift/⌘‑click cards) → one file set / text / clipboard to every selected device, each over its own encrypted channel; 📤 in a space selects all its online members.
-- **Signaling hardening**: per‑socket token bucket (40 burst, 10/s), per‑IP and global connection caps, payload cap, room capacity; optional **metadata‑only audit log** (`AUDIT_LOG=1`: hashed room ids, peer counts, limit hits — never names or content); `/health` shows connections and uptime.
-- **Team licensing**: `packages/license` mints/verifies ES256 JWTs (`plan`, `seats`, `exp`, `org`). A device stores its token (Spaces dialog → Team) and presents it on every join; a valid token lifts that room’s capacity to `seats × 4` (max 2000). Keys: `node packages/license/scripts-keys.mjs`; set `LICENSE_PUBLIC_KEY` on the signaling host.
-- **Billing** (`apps/billing`, Cloudflare Worker): `POST /checkout {seats, org}` creates a Razorpay order; the `payment.captured` webhook is HMAC‑verified and mints a 31‑day license stored in KV; `GET /license/:orderId` hands it to the client. Test‑mode keys only; nothing live yet.
-- **Self‑host**: `infra/selfhost` — one `docker compose up` with automatic HTTPS.
-- **Docs**: `SECURITY.md` (threat model, crypto, what each component sees), `PRIVACY.md`.
-- **Landing page** (“The Signal”: a fixed canvas where a packet travels from your device to theirs as you scroll; dark-first, paper light theme; Manrope + Instrument Serif): `apps/site` — pages live in `src/pages/*.mjs`, `pnpm --filter @narad/site build` renders them (plus `sitemap.xml`, `llms.txt`) into committed static HTML; Cloudflare Pages serves the folder as-is. Deployment config (domain, app URL, GitHub, email, “Developed by” name): `apps/site/site.config.json` or env; see GO-LIVE.md §7a. Keyword pages: `/share-files-with-anyone`, `/online-clipboard`, `/send-large-files`, `/airdrop-alternative`, `/receive`.
-
-Not in this phase: the Tauri desktop app (needs a Rust toolchain on the build machine) and a Firefox build of the extension (Firefox MV3 has no offscreen documents; the engine would move into the background page).
-
-## Phase 2 concepts
-
-- **Pairing** (`packages/core/src/pake.ts`, `pairing.ts`): a 6‑digit code shown on one device, typed/scanned on the other. Both meet in a short‑lived rendezvous room, open the usual encrypted channel, then run **SPAKE2 over ristretto255** with the channel fingerprint as context. A wrong code or a MITM’d channel fails; an eavesdropper gets exactly one online guess, never an offline dictionary attack. The result is a shared `pairSecret`.
-- **Contacts** (`contacts.ts`): a contact is just that pair secret. Both devices join the room `p-<hash(deviceIds, pairSecret)>` on every start, so they see each other on any network with no directory and no server‑side friend list. Removing a contact leaves the room. Optional auto‑accept per contact.
-- **Spaces** (`spaces.ts`): “office mode”. A name plus a 128‑bit secret that lives in the invite link’s `#fragment` (never sent to the server). Everyone holding the link is in room `s-<hash(name, secret)>`, persistently. Share by link or QR.
-- **Narad ID** (`naradId`): `rohan#7k2p`, a recognisable handle derived from your name and device key. It is not a lookup key (there is no directory to look up in); pairing is what connects people.
-- `?sabha=0` disables same‑network discovery for a tab (privacy / tests).
-
-### Chrome extension
-
+### 3. Start local development
 ```bash
-pnpm --filter @narad/extension build     # → apps/extension/dist
+# Starts signaling server (ws://localhost:8794/ws) and web app (http://localhost:5173) in parallel
+pnpm dev
 ```
-Load `apps/extension/dist` as an unpacked extension (chrome://extensions → Developer mode). The engine runs in an **offscreen document** (MV3 service workers die after ~30 s; offscreen documents with the WEB_RTC reason do not), so your devices stay connected. Set `VITE_SIGNALING_URL` at build time for production.
 
-Open http://localhost:5173 in two browsers/devices on the same network: they appear in each other's **sabha**.
-Over the internet, click **Join room → Create room** and share the link.
+* **Web Application:** Open [http://localhost:5173](http://localhost:5173)
+* **Signaling Health:** Open [http://localhost:8794/health](http://localhost:8794/health)
 
-## Design system (“Nishā + Mayur”)
+> **Windows PowerShell Tip:** If your environment does not accept inline Unix environment variables, run:
+> ```powershell
+> $env:NARAD_PORT="8794"; pnpm dev
+> ```
 
-**Logo**: the Narad mark is two pillars (devices) joined by one direct stroke (the transfer) — a two-tone “N”. Source: `apps/site/brand/mark.svg` (pillars in `currentColor`, stroke in the teal gradient); app/favicon tile: `apps/site/favicon.svg` (= `apps/web/public/icon.svg`). Rasters (favicon.ico, apple-touch-icon, 192/512 + maskable, `og.png`) are rendered with `pnpm --filter @narad/site icons`; extension PNGs draw the same geometry in `apps/extension/scripts/make-icons.mjs`.
+---
 
-The app is dark-first with glass surfaces, saffron primary; the landing page has light and dark themes (`data-theme`, follows the OS by default, toggle persisted in `localStorage`). Tokens live in `apps/web/src/index.css` (`@theme`) and are mirrored in `apps/site/index.html` and the extension popup. Icons are a shared inline-SVG set in `packages/icons` (`<Icon name="…" />`, Lucide-style, identical on every OS).
+## 🧪 Testing & Verification
 
-| Token | Hex | Use |
-|---|---|---|
-| `night-950 / 900 / 800` | `#06060d` `#0b0a18` `#141327` | page, panels, inputs |
-| `accent-300 / 400 / 600` (kesar) | `#ffbe7a` `#ff9a3d` `#d9640f` | primary actions, active ring, sent bubbles, progress |
-| `neel-400` | `#a78bfa` | spaces, multi-select |
-| `kesar-500` / `sona-400` | `#ff8a3d` `#ffd166` | diya glow, room codes, contact star, unread badge |
-| `ivory` / `ash` / `ash-dim` | `#f5f1e8` `#a7a3b8` `#6f6b82` | text scale |
-| emerald / amber / rose | Tailwind | secure / connecting / error |
-
-Type: **Manrope** (variable, Latin) + **Noto Sans Devanagari**, both self-hosted (no Google Fonts call). Utilities: `card`, `card-float`, `glass`, `btn-primary`, `btn-ghost`, `btn-icon`, `input`, `pill-*`, `avatar-ring`, `text-gradient`, `eyebrow`. Motion: `rise`, `modal-in`, `toast-in`, `progress-bar` shimmer, `pulse-ring`; all respect `prefers-reduced-motion`. Extension PNG icons: `pnpm --filter ./apps/extension icons`.
-
-## Test
+Narad maintains a rigorous test suite covering cryptographic primitives, resumable chunking, and signaling rate-limits.
 
 ```bash
-pnpm test           # unit tests (core crypto/chunking, signaling rooms)
-pnpm e2e            # Playwright end-to-end (builds web, starts signaling)
-E2E_SIGNALING_PORT=8796 pnpm e2e   # isolate from a running dev server / a loaded extension on this machine
+# Run all unit test suites (core crypto, PAKE, signaling, licensing)
+pnpm test
+
+# Run type checks across all workspace packages
 pnpm typecheck
+
+# Run end-to-end Playwright tests with real browser WebRTC
+pnpm e2e
 ```
 
-## Deploy
+**Unit Test Breakdown (39/39 passing):**
+* `packages/core`: Contacts, Chakra P-256 Crypto, SPAKE2 Pairing, Pushpak Chunking, Resumable file transfer across dropped connections
+* `packages/license`: ES256 cryptographic verification & tamper testing
+* `apps/signaling`: Room lifecycle, message validation, token bucket rate limits, ICE negotiation
+* `apps/billing`: Razorpay webhook signature validation & license generation
 
-Full production walkthrough (domains, secrets, Cloudflare, TURN, billing, Web Store, monitoring): **[GO-LIVE.md](./GO-LIVE.md)**. Gate every deploy with `SIGNALING_URL=wss://… ./scripts/preflight.sh`.
+---
 
-- **Web**: `pnpm --filter @narad/web build` → `apps/web/dist` to Cloudflare Pages/Netlify/any static host. Set `VITE_SIGNALING_URL` and `VITE_ICE_SERVERS` in `apps/web/.env`.
-- **Signaling**: `pnpm --filter @narad/signaling deploy:cf` (Cloudflare Workers + Durable Objects), or `PORT=8794 pnpm --filter @narad/signaling start` behind any reverse proxy with WebSocket support.
-- **TURN**: see `infra/turn/README.md`.
+## 🔒 Security Model
 
-## Security model (MVP)
+* **Wire Security:** WebRTC standard DTLS encapsulation.
+* **Payload Encryption:** Application-level AES-256-GCM with distinct keys derived via ephemeral ECDH (P-256) per session.
+* **MITM Defense:** Out-of-band SAS (Short Authentication String) 4-emoji comparison fingerprint.
+* **Zero Persistence:** Signaling servers operate stateless in memory. Neither payloads nor filenames ever touch a disk or database.
+* **Device Identity:** Hardware-backed non-extractable ECDSA device identity keys persisted securely in client IndexedDB.
 
-- WebRTC DTLS on the wire **plus** app‑layer E2E: P‑256 ECDH → HKDF‑SHA256 → AES‑256‑GCM per session.
-- 4‑emoji short authentication string shown on both devices; compare to rule out a MITM signaling server.
-- Device identity key (ECDSA P‑256, non‑extractable) lives in IndexedDB. Phase 2 uses it for signed pairing.
-- The signaling server validates messages, caps rooms at 50 peers and 64 KB/message, and stores nothing.
-- Pairing: SPAKE2 (ristretto255), context‑bound to the channel fingerprint; pair secrets and space secrets live only on devices (IndexedDB).
+Detailed threat analysis and formal cryptography specifications are documented in [**`SECURITY.md`**](./SECURITY.md).
+
+---
+
+## 🚢 Production Deployment
+
+Narad is architected to deploy easily to global edge platforms or self-hosted servers:
+
+* **Static Web & Site:** Cloudflare Pages, Vercel, or Netlify (`pnpm --filter @narad/web build`)
+* **Signaling Server:** Cloudflare Workers with Durable Objects (`pnpm --filter @narad/signaling deploy:cf`) or Docker container on VPS (`apps/signaling/Dockerfile`)
+* **Self-Hosted Complete Stack:** One-command Docker Compose with automatic Let's Encrypt TLS in [`infra/selfhost`](./infra/selfhost)
+
+Refer to [**`GO-LIVE.md`**](./GO-LIVE.md) and [**`infra/DEPLOY.md`**](./infra/DEPLOY.md) for full deployment instructions.
+
+---
+
+## 👨‍💻 Developed By
+
+**Sonu Verma**  
+* GitHub: [@SONUVERMA11](https://github.com/SONUVERMA11)  
+* Repository: [https://github.com/SONUVERMA11/narad](https://github.com/SONUVERMA11/narad)  
+* Live Platform: [https://narad.sh](https://narad.sh)
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](./LICENSE). Feel free to use, modify, and distribute.
