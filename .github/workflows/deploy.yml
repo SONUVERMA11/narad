@@ -1,0 +1,36 @@
+# Production deploy to Cloudflare on every push to main.
+# Enable: repo Settings → Variables: CF_DEPLOY=true, VITE_SIGNALING_URL=wss://signaling.narad.sh/ws
+#         repo Settings → Secrets:   CLOUDFLARE_API_TOKEN (Workers Scripts:Edit, Pages:Edit, KV:Edit, DO:Edit), CLOUDFLARE_ACCOUNT_ID
+name: Deploy
+on:
+  push: { branches: [main] }
+  workflow_dispatch:
+concurrency: { group: deploy, cancel-in-progress: false }
+jobs:
+  deploy:
+    if: ${{ vars.CF_DEPLOY == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 9 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: pnpm }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -r typecheck
+      - run: pnpm --filter @narad/core --filter @narad/signaling --filter @narad/license --filter @narad/billing test
+      - name: Build web app
+        run: pnpm --filter @narad/web build
+        env: { VITE_SIGNALING_URL: "${{ vars.VITE_SIGNALING_URL }}" }
+      - name: Deploy signaling worker
+        uses: cloudflare/wrangler-action@v3
+        with: { apiToken: "${{ secrets.CLOUDFLARE_API_TOKEN }}", accountId: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}", workingDirectory: apps/signaling, command: deploy }
+      - name: Deploy billing worker
+        uses: cloudflare/wrangler-action@v3
+        with: { apiToken: "${{ secrets.CLOUDFLARE_API_TOKEN }}", accountId: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}", workingDirectory: apps/billing, command: deploy }
+      - name: Deploy web app (Pages project narad-app)
+        uses: cloudflare/wrangler-action@v3
+        with: { apiToken: "${{ secrets.CLOUDFLARE_API_TOKEN }}", accountId: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}", command: pages deploy apps/web/dist --project-name narad-app --branch main }
+      - name: Deploy landing page (Pages project narad-site)
+        uses: cloudflare/wrangler-action@v3
+        with: { apiToken: "${{ secrets.CLOUDFLARE_API_TOKEN }}", accountId: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}", command: pages deploy apps/site --project-name narad-site --branch main }

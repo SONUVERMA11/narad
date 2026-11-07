@@ -1,0 +1,21 @@
+# Narad
+
+> Narad (नारद) is a free online file sharing tool: send files of any size, text and your clipboard from any device to any device with a 6-digit code or over the same Wi-Fi. Peer-to-peer (WebRTC), end-to-end encrypted (AES-256-GCM), no account, nothing stored on any server. Works in every modern browser on Windows, macOS, Linux, Android and iPhone; Chrome extension for right-click sharing. Made in India; open-source core.
+
+Key facts
+- Share with anyone: the sender gets a 6-digit code; the receiver types it at https://narad.sh/receive (or opens app.narad.sh/#code=…). Items go device to device over an encrypted channel. Either side can keep the other as a contact afterwards.
+- No size limit: files stream straight to disk; transfers resume after a Wi-Fi drop.
+- Online clipboard: copy on one device, paste on another (opt-in per contact).
+- Same Wi-Fi: devices discover each other automatically; bytes never leave the router.
+- Server sees only IP, a random session id, device name and a room hash — never file names, sizes or content.
+- Free for personal use; Team plan ₹149/user/month; self-host ₹14,999/year.
+
+Pages
+- [AirDrop for Windows & Android: Free Cross‑Platform AirDrop Alternative in Your Browser | Narad](https://narad.sh/airdrop-alternative): AirDrop alternative that works between iPhone, Android, Windows, Mac and Linux. Same Wi‑Fi: devices find each other instantly. Anywhere else: a 6‑digit code. No app, no account, no size limit, end‑to‑end encrypted.
+- [Narad home](https://narad.sh/): Free online file sharing: send files of any size, text and your clipboard to any device with a 6‑digit code or over Wi‑Fi. No account, end‑to‑end encrypted, nothing stored on a server. iPhone, Android, Windows, Mac.
+- [Online Clipboard: Copy on One Device, Paste on Another (iPhone, Android, Windows, Mac) | Narad](https://narad.sh/online-clipboard): Free online clipboard that syncs between your phone and computer, end‑to‑end encrypted, nothing stored. Copy on iPhone or Android, paste on Windows or Mac. Send text, links and screenshots to any device with a code.
+- [Receive Files with a Code — Narad | Enter 6‑Digit Code, No Account](https://narad.sh/receive): Got a Narad code? Enter the 6‑digit code to receive files, text or clipboard directly from the sender’s device. End‑to‑end encrypted, no account, works in any browser.
+- [Send Large Files Online Free — No Size Limit, No Account | Narad](https://narad.sh/send-large-files): Send large files online for free with no size limit: 10 GB, 100 GB, whole folders. Direct device‑to‑device, resumes after Wi‑Fi drops, end‑to‑end encrypted, nothing stored. No account.
+- [Share Files with Anyone Using a 6‑Digit Code — Free, No Account | Narad](https://narad.sh/share-files-with-anyone): Share files, folders, text or your clipboard with anyone: get a 6‑digit code, they type it at ${HOST}/receive. No account, no size limit, end‑to‑end encrypted, nothing stored on a server.
+- [Security model](https://github.com/narad-app/narad/blob/main/SECURITY.md)
+- [Privacy](https://github.com/narad-app/narad/blob/main/PRIVACY.md)

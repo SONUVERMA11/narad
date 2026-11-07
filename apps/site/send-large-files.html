@@ -1,0 +1,171 @@
+<!doctype html>
+<!-- Narad · narad.sh · Developed by Rohan · 2026-11-07 -->
+<html lang="en" data-app="https://app.narad.sh" data-app-auto="1">
+<head>
+<meta charset="utf-8" />
+<meta name="author" content="Rohan" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Send Large Files Online Free — No Size Limit, No Account | Narad</title>
+<meta name="description" content="Send large files online for free with no size limit: 10 GB, 100 GB, whole folders. Direct device‑to‑device, resumes after Wi‑Fi drops, end‑to‑end encrypted, nothing stored. No account." />
+<link rel="canonical" href="https://narad.sh/send-large-files" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Narad" />
+<meta property="og:url" content="https://narad.sh/send-large-files" />
+<meta property="og:title" content="Send Large Files Online Free — No Size Limit, No Account | Narad" />
+<meta property="og:description" content="Send large files online for free with no size limit: 10 GB, 100 GB, whole folders. Direct device‑to‑device, resumes after Wi‑Fi drops, end‑to‑end encrypted, nothing stored. No account." />
+<meta property="og:image" content="https://narad.sh/brand/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f1ea" />
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d0d12" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+<link rel="apple-touch-icon" href="/brand/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="preload" href="/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css?v=2b30f8d5" />
+<script>(function(){try{var t=localStorage.getItem('narad:theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}try{var l=localStorage.getItem('narad:lang')||(navigator.language.indexOf('hi')===0?'hi':'en');document.documentElement.lang=l;}catch(e){}document.documentElement.classList.add('js');})();</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Narad","item":"https://narad.sh/"},{"@type":"ListItem","position":2,"name":"Send large files","item":"https://narad.sh/send-large-files"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the maximum file size I can send?","acceptedAnswer":{"@type":"Answer","text":"There is no maximum. Narad streams the file from the sender’s disk to the receiver’s disk in chunks, so a 50 GB video uses the same memory as a photo. The only limit is the receiver’s free disk space."}},{"@type":"Question","name":"How fast is it?","acceptedAnswer":{"@type":"Answer","text":"On the same Wi‑Fi, typically 20–80 MB/s (your router is the limit). Over the internet it is bounded by the slower side’s upload speed, since the file goes directly between the devices without a server hop."}},{"@type":"Question","name":"What happens if the connection drops halfway?","acceptedAnswer":{"@type":"Answer","text":"Both sides freeze the transfer. When the devices see each other again (within 10 minutes) Narad resumes from the last byte that arrived. You never restart from zero."}},{"@type":"Question","name":"Can I send a whole folder?","acceptedAnswer":{"@type":"Answer","text":"Yes. Drag a folder in (or use the folder button). The structure is recreated on the other side. On desktop Chrome and Edge files are written directly to the folder you choose; other browsers download as usual."}},{"@type":"Question","name":"Do I need to compress or zip the files first?","acceptedAnswer":{"@type":"Answer","text":"No. Send them as they are. Compression would only add a step; the bottleneck is the network, not the file format."}}]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="g-flow" x1="16" y1="14" x2="48" y2="50" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffbe7a"/><stop offset="1" stop-color="#d9640f"/></linearGradient>
+<symbol id="mark" viewBox="0 0 64 64"><g fill="none" stroke-linecap="round" stroke-width="9"><path d="M16 14v36M48 14v36" stroke="currentColor"/><path d="M16 14l32 36" stroke="url(#g-flow)"/></g></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 12.6a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a14.5 14.5 0 0 1 20 0"/><circle cx="12" cy="19.5" r=".8" fill="currentColor"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+<symbol id="i-building" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2M10 21v-3h4v3"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/></symbol>
+<symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 13l2 2 4-4"/></symbol>
+<symbol id="i-pointer" viewBox="0 0 24 24"><path d="M9 9l5 12 1.8-5.2L21 14z"/><path d="M7.2 2.2l.8 2.7M2.2 7.2l2.7.8M3 3l2 2"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 21l1.9-5.4A8 8 0 1 1 21 12z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.2 4.2M9.9 5.2A10.6 10.6 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4.2M6.6 6.6A17 17 0 0 0 2 12s3.5 7 10 7a10 10 0 0 0 4.6-1.1"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+<symbol id="i-chrome" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 8.5h8.2M9 13.8L4.9 6.7M15 13.8l-4.1 7.1"/></symbol>
+<symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6.2 0C6.6 3.8 5.5 4.1 5.5 4.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 10.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/><path d="M9 20c-4.5 1.5-4.5-2.5-6-3"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M10.9 12.1L20 3M15 8l3 3M18 5l3 3"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 19h16"/></symbol>
+</defs></svg>
+<canvas id="signal" aria-hidden="true"></canvas>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Narad home"><svg class="mark"><use href="#mark"/></svg>Narad<small>नारद</small></a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/share-files-with-anyone"><span data-en>Share with code</span><span data-hi>कोड से भेजें</span></a>
+      <a href="/online-clipboard"><span data-en>Online clipboard</span><span data-hi>ऑनलाइन क्लिपबोर्ड</span></a>
+      <a href="/send-large-files" aria-current="page"><span data-en>Large files</span><span data-hi>बड़ी फाइलें</span></a>
+      <a href="/#pricing"><span data-en>Pricing</span><span data-hi>कीमत</span></a>
+      <a href="/receive"><span data-en>Receive</span><span data-hi>पाएँ</span></a>
+    </nav>
+    <div class="right">
+      <button class="lang" id="langBtn" onclick="toggleLang()" aria-label="Switch language">हिंदी</button>
+      <button class="btn-icon theme" onclick="toggleTheme()" aria-label="Toggle theme" title="Theme"><svg class="icon sun"><use href="#i-sun"/></svg><svg class="icon moon"><use href="#i-moon"/></svg></button>
+      <a class="btn btn-solid btn-sm cta" href="https://app.narad.sh" data-app-link><span data-en>Open app</span><span data-hi>App खोलें</span></a>
+      <button class="btn-icon menu-btn" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav"><span class="open"><svg class="icon"><use href="#i-menu"/></svg></span><span class="close"><svg class="icon"><use href="#i-x"/></svg></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="/share-files-with-anyone"><span data-en>Share with code</span><span data-hi>कोड से भेजें</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
+    <a href="/online-clipboard"><span data-en>Online clipboard</span><span data-hi>ऑनलाइन क्लिपबोर्ड</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
+    <a href="/send-large-files"><span data-en>Large files</span><span data-hi>बड़ी फाइलें</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
+    <a href="/#pricing"><span data-en>Pricing</span><span data-hi>कीमत</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
+    <a href="/receive"><span data-en>Receive</span><span data-hi>पाएँ</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
+    <a class="cta" href="https://app.narad.sh" data-app-link><span data-en>Open app</span><span data-hi>App खोलें</span> <svg class="icon"><use href="#i-arrow"/></svg></a>
+  </nav>
+</header>
+<main id="top" class="veil">
+
+<article class="article">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Narad</a> › <span><span data-en>Send large files</span><span data-hi>बड़ी फाइलें भेजें</span></span></nav>
+    <span class="kicker"><svg class="icon"><use href="#i-file"/></svg> <span data-en>10 GB? 100 GB? same thing.</span><span data-hi>10 GB? 100 GB? एक ही बात।</span></span>
+    <h1 data-en>Send large files online, <em class="s">free, no size limit</em></h1>
+    <h1 data-hi>बड़ी फाइलें ऑनलाइन भेजो, <em class="s">मुफ़्त, बिना size limit</em></h1>
+    <p class="lede"><span data-en>WeTransfer stops at 2 GB, email at 25 MB, WhatsApp compresses your video. Narad streams any file of any size directly from your device to theirs, resumes if the Wi‑Fi drops, and stores nothing on any server. No account, no waiting for an upload to finish before the download can start.</span><span data-hi>WeTransfer 2 GB पर रुकता है, email 25 MB पर, WhatsApp वीडियो compress कर देता है। Narad किसी भी size की फाइल सीधे आपके डिवाइस से उनके डिवाइस पर stream करता है, Wi‑Fi टूटे तो resume करता है, और किसी सर्वर पर कुछ store नहीं करता। न अकाउंट, न पहले upload खत्म होने का इंतज़ार।</span></p>
+    <div class="cta-row"><a class="btn btn-signal" href="https://app.narad.sh" data-app-link><span data-en>Send a big file</span><span data-hi>बड़ी फाइल भेजो</span> <svg class="icon"><use href="#i-arrow"/></svg></a><a class="btn" href="/receive"><svg class="icon"><use href="#i-key"/></svg> <span data-en>I have a code</span><span data-hi>मेरे पास कोड है</span></a></div>
+    <div class="prose">
+      <h2><span data-en>Why there is no size limit</span><span data-hi>Size limit क्यों नहीं है</span></h2>
+      <p><span data-en>Cloud transfer services have limits because they must store your file first and pay for that storage. Narad never stores the file: it opens an encrypted peer‑to‑peer connection (WebRTC) between the two devices and streams the bytes in back‑pressured chunks straight to disk. Nothing sits in RAM, nothing sits on a server, so there is nothing to cap.</span><span data-hi>Cloud transfer services में limit इसलिए है क्योंकि उन्हें पहले आपकी फाइल store करनी पड़ती है और उसका खर्च उठाना पड़ता है। Narad फाइल कभी store नहीं करता: दो डिवाइसों के बीच encrypted peer‑to‑peer कनेक्शन (WebRTC) खोलकर bytes को chunks में सीधे disk पर stream करता है। न RAM में कुछ, न सर्वर पर, तो cap किस बात का।</span></p>
+      <h2><span data-en>How to send a large file</span><span data-hi>बड़ी फाइल कैसे भेजें</span></h2>
+      <ol>
+        <li><span data-en>Open <a href="https://app.narad.sh" data-app-link>app.narad.sh</a> on both devices. On the same Wi‑Fi they see each other automatically; otherwise use <a href="/share-files-with-anyone">a 6‑digit code</a>.</span><span data-hi>दोनों डिवाइस पर <a href="https://app.narad.sh" data-app-link>app.narad.sh</a> खोलें। एक ही Wi‑Fi पर अपने आप दिखते हैं; वरना <a href="/share-files-with-anyone">6 अंकों का कोड</a> इस्तेमाल करें।</span></li>
+        <li><span data-en>Drag the file or folder onto the device card, or pick it with the paperclip.</span><span data-hi>फाइल या फ़ोल्डर को device card पर drag करें, या paperclip से चुनें।</span></li>
+        <li><span data-en>The receiver taps Accept and chooses where to save. Progress, speed and ETA show on both sides.</span><span data-hi>पाने वाला Accept दबाकर जगह चुनता है। Progress, speed और ETA दोनों तरफ़ दिखते हैं।</span></li>
+      </ol>
+      <h2><span data-en>Resumable transfers</span><span data-hi>Resumable transfer</span></h2>
+      <p><span data-en>If the connection drops at 80%, both devices keep their state: the sender keeps the file handle, the receiver keeps the open file and byte count. When they reconnect, the transfer continues from that byte. The resume window is 10 minutes; after a page reload the receiver asks for a clean restart instead.</span><span data-hi>कनेक्शन 80% पर टूटे तो दोनों डिवाइस अपनी state रखते हैं: भेजने वाला file handle, पाने वाला खुली फाइल और byte count। दोबारा जुड़ते ही transfer उसी byte से आगे चलता है। Resume window 10 मिनट है; page reload के बाद पाने वाला साफ़ restart माँगता है।</span></p>
+      <h2><span data-en>Large file sharing, compared</span><span data-hi>बड़ी फाइल भेजने के तरीके, तुलना</span></h2>
+      <ul>
+        <li><strong>WeTransfer:</strong> <span data-en>2 GB free, 7‑day storage on their servers, account for more.</span><span data-hi>2 GB मुफ़्त, 7 दिन उनके सर्वर पर, ज़्यादा के लिए अकाउंट।</span></li>
+        <li><strong>Google Drive / Dropbox:</strong> <span data-en>upload, wait, share link, download; quota counts; file lives in the cloud until you remember to delete it.</span><span data-hi>upload, इंतज़ार, link share, download; quota में गिनती; फाइल cloud में तब तक जब तक आप delete करना याद रखें।</span></li>
+        <li><strong>WhatsApp / Telegram:</strong> <span data-en>2 GB cap, videos recompressed, copies on their servers.</span><span data-hi>2 GB cap, वीडियो recompress, उनके सर्वर पर copies।</span></li>
+        <li><strong>USB drive:</strong> <span data-en>honestly fine, if you have one, and it’s formatted right, and you’re in the same room.</span><span data-hi>सच में ठीक है, अगर पास हो, सही format हो, और आप एक ही कमरे में हों।</span></li>
+        <li><strong>Narad:</strong> <span data-en>no cap, no storage, direct, encrypted, resumes. Any browser.</span><span data-hi>न cap, न storage, सीधा, encrypted, resume। कोई भी ब्राउज़र।</span></li>
+      </ul>
+      <h2>FAQ</h2>
+    </div>
+    <div class="faq"><details><summary>What is the maximum file size I can send?</summary><p>There is no maximum. Narad streams the file from the sender’s disk to the receiver’s disk in chunks, so a 50 GB video uses the same memory as a photo. The only limit is the receiver’s free disk space.</p></details><details><summary>How fast is it?</summary><p>On the same Wi‑Fi, typically 20–80 MB/s (your router is the limit). Over the internet it is bounded by the slower side’s upload speed, since the file goes directly between the devices without a server hop.</p></details><details><summary>What happens if the connection drops halfway?</summary><p>Both sides freeze the transfer. When the devices see each other again (within 10 minutes) Narad resumes from the last byte that arrived. You never restart from zero.</p></details><details><summary>Can I send a whole folder?</summary><p>Yes. Drag a folder in (or use the folder button). The structure is recreated on the other side. On desktop Chrome and Edge files are written directly to the folder you choose; other browsers download as usual.</p></details><details><summary>Do I need to compress or zip the files first?</summary><p>No. Send them as they are. Compression would only add a step; the bottleneck is the network, not the file format.</p></details></div>
+    <form class="recv" data-receive aria-label="Receive with code">
+  <span class="kicker"><svg class="icon"><use href="#i-key"/></svg> <span data-en>Got a code?</span><span data-hi>कोड मिला?</span></span>
+  <p class="hint"><span data-en>Type the 6‑digit code the sender gave you. The app opens and the transfer starts, device to device.</span><span data-hi>भेजने वाले का 6 अंकों का कोड डालें। App खुलेगा और transfer डिवाइस‑से‑डिवाइस शुरू होगा।</span></p>
+  <input inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="••••••" aria-label="6-digit code" autocomplete="one-time-code" />
+  <div><button class="btn btn-signal" type="submit"><span data-en>Receive</span><span data-hi>पाएँ</span> <svg class="icon"><use href="#i-arrow"/></svg></button></div>
+</form>
+    <nav class="related" aria-label="Related"><a href="/share-files-with-anyone">Share with a code<small>to anyone, no account</small></a><a href="/airdrop-alternative">AirDrop alternative<small>Windows, Android, Linux</small></a><a href="/online-clipboard">Online clipboard<small>copy here, paste there</small></a></nav>
+  </div>
+</article>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/"><svg class="mark"><use href="#mark"/></svg>Narad<small>नारद</small></a>
+        <p class="tag"><span data-en>Free online file sharing: send files, text and your clipboard to any device with a 6‑digit code. Zero storage, end‑to‑end encrypted. Made in India.</span><span data-hi>मुफ़्त ऑनलाइन फाइल शेयरिंग: 6 अंकों के कोड से किसी भी डिवाइस को फाइल, टेक्स्ट और क्लिपबोर्ड भेजें। Zero storage, end‑to‑end encrypted। भारत में बना।</span></p>
+      </div>
+      <div><h4><span data-en>Use cases</span><span data-hi>इस्तेमाल</span></h4><ul>
+        <li><a href="/share-files-with-anyone"><span data-en>Share files with anyone</span><span data-hi>किसी को भी फाइल भेजें</span></a></li>
+        <li><a href="/send-large-files"><span data-en>Send large files free</span><span data-hi>बड़ी फाइलें मुफ़्त भेजें</span></a></li>
+        <li><a href="/online-clipboard"><span data-en>Online clipboard</span><span data-hi>ऑनलाइन क्लिपबोर्ड</span></a></li>
+        <li><a href="/airdrop-alternative"><span data-en>AirDrop for Windows & Android</span><span data-hi>Windows/Android के लिए AirDrop</span></a></li>
+        <li><a href="/receive"><span data-en>Receive with a code</span><span data-hi>कोड से पाएँ</span></a></li>
+      </ul></div>
+      <div><h4><span data-en>Product</span><span data-hi>प्रोडक्ट</span></h4><ul>
+        <li><a href="https://app.narad.sh" data-app-link><span data-en>Web app</span><span data-hi>Web app</span></a></li>
+        <li><a href="/#extension"><span data-en>Chrome extension</span><span data-hi>Chrome एक्सटेंशन</span></a></li>
+        <li><a href="/#pricing"><span data-en>Pricing</span><span data-hi>कीमत</span></a></li>
+        <li><a href="https://github.com/narad-app/narad/tree/main/infra/selfhost"><span data-en>Self‑host</span><span data-hi>Self‑host</span></a></li>
+      </ul></div>
+      <div><h4><span data-en>Trust</span><span data-hi>भरोसा</span></h4><ul>
+        <li><a href="https://github.com/narad-app/narad/blob/main/SECURITY.md"><span data-en>Security</span><span data-hi>सुरक्षा</span></a></li>
+        <li><a href="https://github.com/narad-app/narad/blob/main/PRIVACY.md"><span data-en>Privacy</span><span data-hi>प्राइवेसी</span></a></li>
+        <li><a href="https://github.com/narad-app/narad"><span data-en>Source code</span><span data-hi>Source code</span></a></li>
+        <li><a href="mailto:hello@narad.sh">hello@narad.sh</a></li>
+      </ul></div>
+    </div>
+    <div class="wordmark" aria-hidden="true">NARAD</div>
+    <div class="foot-bottom">
+      <span>© 2026 Narad · <span data-en>Made in India</span><span data-hi>भारत में बना</span></span>
+      <span><span data-en>Bhejo. Pahunch gaya.</span><span data-hi>भेजो। पहुँच गया।</span></span>
+      <span class="dev-tag"><span data-en>Developed by</span><span data-hi>Developed by</span> Rohan</span>
+    </div>
+  </div>
+</footer>
+<script src="/site.js?v=2b30f8d5"></script>
+</body>
+</html>

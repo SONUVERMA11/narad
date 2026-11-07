@@ -1,0 +1,14 @@
+{
+  "name": "@narad/site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "icons": "node scripts/make-icons.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "@fontsource/instrument-serif": "5",
+    "playwright": "^1.48.2"
+  }
+}

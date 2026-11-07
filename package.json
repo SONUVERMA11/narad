@@ -1,0 +1,16 @@
+{
+  "name": "narad",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Narad — instant, zero-storage, peer-to-peer sharing for teams",
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "NARAD_PORT=8794 pnpm -r --parallel --filter ./apps/signaling --filter ./apps/web dev",
+    "dev:signaling": "pnpm --filter @narad/signaling dev",
+    "dev:web": "pnpm --filter @narad/web dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck",
+    "e2e": "pnpm --filter @narad/e2e test"
+  }
+}

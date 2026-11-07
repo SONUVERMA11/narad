@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "noEmit": false, "outDir": "dist", "types": ["node"] },
+  "include": ["src/room.ts", "src/node.ts"]
+}

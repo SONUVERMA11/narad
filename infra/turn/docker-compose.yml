@@ -1,0 +1,16 @@
+# TURN relay fallback (only used when direct P2P fails: corporate firewalls, symmetric NAT).
+# Encrypted bytes pass through; the relay cannot read anything.
+#   TURN_SECRET=change-me TURN_REALM=turn.narad.sh docker compose up -d
+services:
+  coturn:
+    image: coturn/coturn:4.6
+    network_mode: host
+    restart: unless-stopped
+    command: >
+      -n --log-file=stdout
+      --listening-port=3478 --tls-listening-port=5349
+      --realm=${TURN_REALM:-narad.local}
+      --use-auth-secret --static-auth-secret=${TURN_SECRET:?set TURN_SECRET}
+      --fingerprint --no-multicast-peers --no-cli
+      --min-port=49160 --max-port=49200
+      --external-ip=${TURN_PUBLIC_IP:-}

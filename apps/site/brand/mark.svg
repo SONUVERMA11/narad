@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Narad">
+  <!-- Narad mark: two pillars (devices) joined by one direct stroke (the transfer). -->
+  <defs>
+    <linearGradient id="n-flow" x1="16" y1="14" x2="48" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffbe7a"/><stop offset="1" stop-color="#d9640f"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-linecap="round" stroke-width="9">
+    <path d="M16 14v36M48 14v36" stroke="currentColor"/>
+    <path d="M16 14l32 36" stroke="url(#n-flow)"/>
+  </g>
+</svg>

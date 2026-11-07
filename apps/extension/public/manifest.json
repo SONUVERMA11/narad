@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Narad — Bhejo. Pahunch gaya.",
+  "short_name": "Narad",
+  "version": "0.2.0",
+  "description": "One click, device-to-device, end-to-end encrypted sharing. Right-click anything → Send to Narad. Nothing is stored on any server.",
+  "minimum_chrome_version": "116",
+  "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" },
+  "action": { "default_popup": "popup.html", "default_title": "Narad", "default_icon": { "16": "icon16.png", "48": "icon48.png" } },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "permissions": ["contextMenus", "offscreen", "storage", "notifications", "downloads", "clipboardRead", "clipboardWrite", "tabs"],
+  "commands": {
+    "send-clipboard": { "suggested_key": { "default": "Ctrl+Shift+Y", "mac": "Command+Shift+Y" }, "description": "Send clipboard to the last used device" }
+  }
+}

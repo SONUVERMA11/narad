@@ -1,0 +1,29 @@
+{
+  "name": "@narad/extension",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "icons": "node scripts/make-icons.mjs",
+    "dev": "vite build --watch",
+    "build": "node scripts/make-icons.mjs && tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"(extension: load dist/ unpacked in chrome://extensions)\""
+  },
+  "dependencies": {
+    "@narad/core": "workspace:*",
+    "@narad/icons": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/chrome": "^0.0.280",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

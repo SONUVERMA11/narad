@@ -1,0 +1,11 @@
+/index.html / 301
+/home / 301
+/app https://app.narad.sh 302
+/open https://app.narad.sh 302
+/share /share-files-with-anyone 301
+/code /receive 301
+/clipboard /online-clipboard 301
+/large-files /send-large-files 301
+/airdrop /airdrop-alternative 301
+/privacy https://github.com/narad-app/narad/blob/main/PRIVACY.md 302
+/security https://github.com/narad-app/narad/blob/main/SECURITY.md 302

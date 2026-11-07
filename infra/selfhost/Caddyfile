@@ -1,0 +1,6 @@
+{$DOMAIN} {
+  reverse_proxy web:80
+}
+signaling.{$DOMAIN} {
+  reverse_proxy signaling:8794
+}

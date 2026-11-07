@@ -1,0 +1,23 @@
+# Narad billing on Cloudflare Workers: Razorpay checkout → webhook → signed Team license in KV.
+# Deploy:  pnpm --filter @narad/billing deploy:cf
+# Secrets: npx wrangler secret put RAZORPAY_KEY_SECRET | RAZORPAY_WEBHOOK_SECRET | LICENSE_PRIVATE_KEY
+name = "narad-billing"
+main = "src/worker.ts"
+compatibility_date = "2024-11-01"
+workers_dev = true
+
+[observability]
+enabled = true
+
+[vars]
+RAZORPAY_KEY_ID = ""                    # rzp_test_… first, rzp_live_… after the test checkout works end to end
+LICENSE_PUBLIC_KEY = ""
+PRICE_PER_SEAT_PAISE = "14900"          # ₹149 / user / month
+ALLOWED_ORIGIN = "https://app.narad.sh"
+
+# npx wrangler kv namespace create LICENSES   → paste the id:
+# [[kv_namespaces]]
+# binding = "LICENSES"
+# id = "<kv namespace id>"
+
+# routes = [{ pattern = "billing.narad.sh", custom_domain = true }]

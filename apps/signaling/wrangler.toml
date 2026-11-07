@@ -1,0 +1,38 @@
+# Narad signaling (Akash) on Cloudflare Workers + Durable Objects.
+# Deploy:  pnpm --filter @narad/signaling deploy:cf
+# Secrets: npx wrangler secret put TURN_SECRET | VAPID_PRIVATE_KEY   (never put these in [vars])
+name = "narad-signaling"
+main = "src/worker.ts"
+compatibility_date = "2024-11-01"
+workers_dev = true                      # keep true until the custom domain below is live, then set false
+
+[observability]
+enabled = true                          # request logs in the Cloudflare dashboard (metadata only)
+
+[[durable_objects.bindings]]
+name = "ROOMS"
+class_name = "RoomDO"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["RoomDO"]
+
+[vars]
+# Comma-separated TURN URLs handed to clients via GET /ice (credentials are minted per client with TURN_SECRET).
+# Leave empty until your coturn host is up; the app still works on LAN / most home networks without it.
+TURN_URLS = ""
+TURN_TTL = "3600"
+# Push nudge (optional): public key + subject here, private key as a secret, KV binding below.
+VAPID_PUBLIC_KEY = ""
+VAPID_SUBJECT = "mailto:hello@narad.sh"
+# Team licenses: public key from `node packages/license/scripts-keys.mjs`.
+LICENSE_PUBLIC_KEY = ""
+
+# --- Custom domain (after DNS is on Cloudflare) ---
+# routes = [{ pattern = "signaling.narad.sh", custom_domain = true }]
+
+# --- Push subscriptions store (optional) ---
+# npx wrangler kv namespace create PUSH   → paste the id:
+# [[kv_namespaces]]
+# binding = "PUSH"
+# id = "<kv namespace id>"
